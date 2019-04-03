@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Mtime</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="tab_1">正在热映</string>
+    <string name="tab_2">即将上映</string>
+
 </resources>

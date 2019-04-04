@@ -3,7 +3,7 @@ package com.markfrain.mtime.bean;
 public class MovieBean {
     String actors;
     String img;
-    String movieId;
+    int movieId;
     String movieType;
     String cC;//影院数
     String NearestShowtimeCount;//上映场次
@@ -36,11 +36,11 @@ public class MovieBean {
         this.img = img;
     }
 
-    public String getMovieId() {
+    public int getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(String movieId) {
+    public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
 

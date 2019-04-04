@@ -15,8 +15,11 @@ import com.markfrain.mtime.R;
 import com.markfrain.mtime.bean.MovieBean;
 
 public class MainLoaclAdapter extends PagedListAdapter<MovieBean, MainLoaclAdapter.MovieLocalViewHolder> {
-    public MainLoaclAdapter(@NonNull DiffUtil.ItemCallback<MovieBean> diffCallback) {
+    ItemClickListener itemClickListener;
+
+    public MainLoaclAdapter(@NonNull DiffUtil.ItemCallback<MovieBean> diffCallback, ItemClickListener itemClickListener) {
         super(diffCallback);
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -39,10 +42,38 @@ public class MainLoaclAdapter extends PagedListAdapter<MovieBean, MainLoaclAdapt
 
         holder.titleView.setText(movieBean.gettCn());
         holder.introduceView.setText(movieBean.getCommonSpecial());
-        holder.countView.setText(movieBean.getcC() + "家影院上映" + movieBean.getNearestShowtimeCount());
+        holder.countView.setText(movieBean.getcC() + "家影院上映"
+                + movieBean.getNearestShowtimeCount() + "场");
         holder.scoreView.setVisibility(
                 movieBean.getR() != null && !movieBean.getR().equals("-1") ? View.VISIBLE : View.GONE);
         holder.scoreView.setText(movieBean.getR());
+
+        holder.buyView.setTag(R.string.app_name, movieBean.getMovieId());
+        holder.buyView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (itemClickListener != null) {
+                    int id = (Integer) (v.getTag(R.string.app_name));
+                    itemClickListener.buy(id);
+                }
+            }
+        });
+        holder.itemView.setTag(R.string.app_name, movieBean.getMovieId());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (itemClickListener != null) {
+                    int id = (Integer) (v.getTag(R.string.app_name));
+                    itemClickListener.click(id);
+                }
+            }
+        });
+    }
+
+    public interface ItemClickListener {
+        void click(int id);
+
+        void buy(int id);
     }
 
     class MovieLocalViewHolder extends RecyclerView.ViewHolder {
@@ -52,6 +83,7 @@ public class MainLoaclAdapter extends PagedListAdapter<MovieBean, MainLoaclAdapt
         TextView introduceView;
         TextView countView;
         TextView scoreView;
+        TextView buyView;
 
         public MovieLocalViewHolder(View itemView) {
             super(itemView);
@@ -61,6 +93,7 @@ public class MainLoaclAdapter extends PagedListAdapter<MovieBean, MainLoaclAdapt
             introduceView = itemView.findViewById(R.id.introduce);
             countView = itemView.findViewById(R.id.count);
             scoreView = itemView.findViewById(R.id.score);
+            buyView = itemView.findViewById(R.id.buy);
         }
     }
 }

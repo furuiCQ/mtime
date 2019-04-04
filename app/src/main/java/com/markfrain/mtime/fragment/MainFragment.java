@@ -28,6 +28,8 @@ import com.markfrain.mtime.presenter.MainPresenter;
 import com.markfrain.mtime.utils.ItemDeraction;
 import com.markfrain.mtime.viewmodel.MainViewModel;
 
+import androidx.navigation.fragment.NavHostFragment;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -92,14 +94,14 @@ public class MainFragment extends BaseFragment<MainPresenter> implements MainCon
         localAdapter = new MainLoaclAdapter(new DiffUtil.ItemCallback<MovieBean>() {
             @Override
             public boolean areItemsTheSame(MovieBean oldItem, MovieBean newItem) {
-                return oldItem.getMovieId().equals(newItem.getMovieId());
+                return oldItem.getMovieId() == (newItem.getMovieId());
             }
 
             @Override
             public boolean areContentsTheSame(MovieBean oldItem, MovieBean newItem) {
-                return oldItem.getMovieId().equals(newItem.getMovieId());
+                return oldItem.getMovieId() == (newItem.getMovieId());
             }
-        });
+        }, localListener);
         newAdapter = new MainNewAdapter(new DiffUtil.ItemCallback<AttentionBean>() {
             @Override
             public boolean areItemsTheSame(AttentionBean oldItem, AttentionBean newItem) {
@@ -110,7 +112,7 @@ public class MainFragment extends BaseFragment<MainPresenter> implements MainCon
             public boolean areContentsTheSame(AttentionBean oldItem, AttentionBean newItem) {
                 return oldItem.getId() == newItem.getId();
             }
-        });
+        }, newListener);
 
 
         localRecycle.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -121,6 +123,38 @@ public class MainFragment extends BaseFragment<MainPresenter> implements MainCon
         newRecycle.addItemDecoration(new ItemDeraction(2));
         newRecycle.setAdapter(newAdapter);
     }
+
+    MainLoaclAdapter.ItemClickListener localListener = new MainLoaclAdapter.ItemClickListener() {
+        @Override
+        public void click(int id) {
+            //详情页面
+            NavHostFragment.findNavController(MainFragment.this).navigate(R.id.action_mainFragment_to_detailsFragment);
+        }
+
+        @Override
+        public void buy(int id) {
+            //购票页面
+        }
+    };
+
+
+    MainNewAdapter.ItemClickListener newListener = new MainNewAdapter.ItemClickListener() {
+        @Override
+        public void click(int id) {
+            //详情页面
+            NavHostFragment.findNavController(MainFragment.this).navigate(R.id.action_mainFragment_to_detailsFragment);
+        }
+
+        @Override
+        public void buy(int id) {
+            //购票页面
+        }
+
+        @Override
+        public void video(int id) {
+            //视频页面
+        }
+    };
 
 
     @Override

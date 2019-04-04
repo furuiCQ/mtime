@@ -16,6 +16,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyApplication extends Application {
     public static HttpContact httpContact;
+    public static HttpContact httpSubContact;
+
     public static final int DEFAULT_TIME = 10;
 
     @Override
@@ -37,6 +39,15 @@ public class MyApplication extends Application {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         httpContact = retrofit.create(HttpContact.class);
+
+        Retrofit retrofit2 = new Retrofit
+                .Builder()
+                .client(client)
+                .baseUrl("http://ticket-m.mtime.cn/")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        httpSubContact = retrofit2.create(HttpContact.class);
 
         Logger.addLogAdapter(new AndroidLogAdapter());
 

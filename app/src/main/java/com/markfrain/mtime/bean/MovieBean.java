@@ -7,6 +7,18 @@ public class MovieBean {
     String movieType;
     String cC;//影院数
     String NearestShowtimeCount;//上映场次
+    String commonSpecial;//简介
+    String tCn;//片名
+    String r;//评分
+    boolean isHot = false;
+
+    public boolean isHot() {
+        return isHot;
+    }
+
+    public void setHot(boolean hot) {
+        isHot = hot;
+    }
 
     public String getActors() {
         return actors;
@@ -17,7 +29,7 @@ public class MovieBean {
     }
 
     public String getImg() {
-        return img;
+        return img == null ? "" : img;
     }
 
     public void setImg(String img) {
@@ -54,5 +66,29 @@ public class MovieBean {
 
     public void setNearestShowtimeCount(String nearestShowtimeCount) {
         NearestShowtimeCount = nearestShowtimeCount;
+    }
+
+    public String getCommonSpecial() {
+        return commonSpecial;
+    }
+
+    public void setCommonSpecial(String commonSpecial) {
+        this.commonSpecial = commonSpecial;
+    }
+
+    public String gettCn() {
+        return tCn;
+    }
+
+    public void settCn(String tCn) {
+        this.tCn = tCn;
+    }
+
+    public String getR() {
+        return r;
+    }
+
+    public void setR(String r) {
+        this.r = r;
     }
 }

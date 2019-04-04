@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:paddingLeft="16dp"
+    android:paddingTop="10dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="144dp"
+        android:layout_height="192dp" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/image"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/want"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_alignLeft="@+id/title"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/color_ff8600"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/want"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/director"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/want"
+        android:layout_alignLeft="@+id/title"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/actor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/director"
+        android:layout_alignLeft="@+id/title"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/image"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/video_btn_bg"
+        android:paddingLeft="26dp"
+        android:paddingTop="8dp"
+        android:paddingRight="26dp"
+        android:paddingBottom="8dp"
+        android:text="@string/video"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/image"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@+id/ticket"
+        android:background="@drawable/buy_bg"
+        android:paddingLeft="26dp"
+        android:paddingTop="8dp"
+        android:paddingRight="26dp"
+        android:paddingBottom="8dp"
+        android:text="@string/ticket"
+        android:textColor="@android:color/white" />
+</RelativeLayout>

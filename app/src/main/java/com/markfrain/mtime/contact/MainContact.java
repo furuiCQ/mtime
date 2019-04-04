@@ -6,7 +6,6 @@ import com.markfrain.mtime.mvp.IView;
 
 public class MainContact {
     public interface IMain extends IView {
-
     }
 
     public interface IMainPre extends IPresenter {
